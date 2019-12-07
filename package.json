@@ -1,0 +1,33 @@
+{
+  "name": "stripe-payments-demo",
+  "description": "Sample store accepting universal payments on the web with Stripe Elements, Payment Request, Apple Pay, Google Pay, Microsoft Pay, and more.",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Romain Huet",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stripe/stripe-payments-demo.git"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "scripts": {
+    "start": "node server/node/server.js",
+    "dev": "node server/node/server.js & npm run webhook",
+    "setup-products": "node server/node/setup.js",
+    "webhook": "stripe listen --project-name=stripe-payments-demo --forward-to http://localhost:8000/webhook",
+    "postinstall": "npm run setup-products && brew install stripe/stripe-cli/stripe"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
+    "express": "^4.15.2",
+    "stripe": "^6.28.0"
+  },
+  "devDependencies": {
+    "@types/faker": "^4.1.5",
+    "ngrok": "^3.2.3"
+  }
+}
